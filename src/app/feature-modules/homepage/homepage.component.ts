@@ -31,7 +31,7 @@ export class HomepageComponent implements OnInit {
         this.ccApiService.userId ?? '',
         [Validators.required, Validators.email],
       ],
-      role: [this.ccApiService.userId ?? 'Student'],
+      role: [this.ccApiService.userRole ?? 'Student', Validators.required],
     });
   }
 
