@@ -15,8 +15,13 @@ export class CcApiService {
 
   constructor(private http: HttpClient) {}
 
-  postData(payload: any): Observable<any> {
+  postDataCalculate(payload: any): Observable<any> {
     const apiUrl = 'http://localhost:8080/calculate';
+    return this.http.post(apiUrl, payload);
+  }
+
+  updatePledge(payload: any): Observable<any> {
+    const apiUrl = 'http://localhost:8080/updatePledge';
     return this.http.post(apiUrl, payload);
   }
 }

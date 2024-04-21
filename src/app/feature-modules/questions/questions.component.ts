@@ -73,7 +73,7 @@ export class QuestionsComponent implements OnInit {
         quantity: this.form.get('quantity')?.value,
       },
     };
-    this.ccApiService.postData(payload).subscribe(
+    this.ccApiService.postDataCalculate(payload).subscribe(
       (response) => {
         console.log('API response:', response);
         this.ccApiService.energyConsumption = response.footprint;

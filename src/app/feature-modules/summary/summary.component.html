@@ -1,4 +1,16 @@
-<div class="container mt-3">
+<div class="container mt-3" *ngIf="pledgeSubmitted">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body text-center">
+          <p class="card-text">You have successfully submitted the pledge.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3" *ngIf="!pledgeSubmitted">
   <div class="row">
     <div class="col-md-6">
       <div class="card">
@@ -49,8 +61,8 @@
                   time. Good job!</label
                 >
                 <label *ngIf="!improvedOrNot()" class="d-block"
-                  >Alert! The carbon emissions level increased this time. You need to
-                  be more cautious.</label
+                  >Alert! The carbon emissions level increased this time. You
+                  need to be more cautious.</label
                 >
               </div>
             </div>
@@ -82,7 +94,8 @@
       </div>
     </div>
   </div>
-  <a href="#" class="btn btn-success mt-3 text-center d-grid col-3 mx-auto"
-    >Go to Homepage</a
-  >
 </div>
+
+<a href="#" class="btn btn-success mt-3 text-center d-grid col-3 mx-auto"
+  >Go to Homepage</a
+>

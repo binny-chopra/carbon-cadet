@@ -15,6 +15,7 @@ export class SummaryComponent {
   public suggestion!: string;
   public pledge!: string;
   public pledgeForm: FormGroup;
+  public pledgeSubmitted: boolean = false;
   constructor(
     private ccApiService: CcApiService,
     private formBuilder: FormBuilder
@@ -34,5 +35,11 @@ export class SummaryComponent {
     return false;
   }
 
-  submitPledge() {}
+  submitPledge() {
+    const payload = {
+      userId: this.ccApiService.userId,
+      pledge: this.pledgeForm.get('targetValue')?.value,
+    };
+    this.ccApiService.updatePledge(payload).subscribe(() => {});
+  }
 }
