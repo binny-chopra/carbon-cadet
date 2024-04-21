@@ -1,0 +1,231 @@
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="card text-center" style="max-width: 500px">
+      <div class="card-header text-bold">
+        We need your inputs to minimize carbon emissions.
+      </div>
+      <div class="stepper-container mt-3 mb-3">
+        <div
+          class="stepper-step"
+          [ngClass]="{ active: currentSection === 'electricity' }"
+        ></div>
+        <div
+          class="stepper-step"
+          [ngClass]="{ active: currentSection === 'food' }"
+        ></div>
+        <div
+          class="stepper-step"
+          [ngClass]="{ active: currentSection === 'travel' }"
+        ></div>
+        <div
+          class="stepper-step"
+          [ngClass]="{ active: currentSection === 'water' }"
+        ></div>
+      </div>
+      <div class="card-body pt-0">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div *ngIf="currentSection === 'electricity'">
+            <h5 class="card-title mb-3">Electricity Consumption</h5>
+            <div class="form-group row mb-3">
+              <label for="sourceElectricity" class="col-sm-4 col-form-label">Source</label>
+              <div class="col-sm-8">
+                <select
+                  formControlName="sourceElectricity"
+                  class="form-control"
+                  id="sourceElectricity"
+                  placeholder="Select Source"
+                >
+                  <option value="COAL">Coal</option>
+                  <option value="NATURAL_GAS">Natural Gas</option>
+                  <option value="RENEWABLE">Renewable</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="load" class="col-sm-4 col-form-label">Load</label>
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  formControlName="load"
+                  class="form-control"
+                  id="load"
+                  placeholder="Enter Load in KiloWatts"
+                />
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="efficiency" class="col-sm-4 col-form-label"
+                >Efficiency</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  formControlName="efficiency"
+                  class="form-control"
+                  id="efficiency"
+                  placeholder="Enter Efficiency"
+                />
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="duration" class="col-sm-4 col-form-label"
+                >Duration</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  formControlName="duration"
+                  class="form-control"
+                  id="duration"
+                  placeholder="Enter duration in hours"
+                />
+              </div>
+            </div>
+          </div>
+          <div *ngIf="currentSection === 'food'">
+            <h5 class="card-title mb-3">Food Consumption</h5>
+            <div class="form-group row mb-3">
+              <label for="type" class="col-sm-4 col-form-label">Type</label>
+              <div class="col-sm-8">
+                <select formControlName="type" class="form-control" id="type">
+                  <option value="VEG">Veg</option>
+                  <option value="NON_VEG">Non-Veg</option>
+                  <option value="VEGAN">Vegan</option>
+                  <option value="PESC">Pescatarian</option>
+                  <option value="KETO">Keto</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="bought" class="col-sm-4 col-form-label">Bought</label>
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  formControlName="bought"
+                  class="form-control"
+                  id="bought"
+                  placeholder="Enter weight in lbs"
+                />
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="used" class="col-sm-4 col-form-label">Used</label>
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  formControlName="used"
+                  class="form-control"
+                  id="used"
+                  placeholder="Enter weight in lbs"
+                />
+              </div>
+            </div>
+          </div>
+          <div *ngIf="currentSection === 'travel'">
+            <h5 class="card-title mb-3">Travelling</h5>
+            <div class="form-group row mb-3">
+              <label for="vehicle" class="col-sm-4 col-form-label"
+                >Vehicle</label
+              >
+              <div class="col-sm-8">
+                <select
+                  formControlName="vehicle"
+                  class="form-control"
+                  id="vehicle"
+                >
+                  <option value="CAR">Car</option>
+                  <option value="CARPOOL">Carpool</option>
+                  <option value="BIKE">Bike</option>
+                  <option value="CYCLE">Cycle</option>
+                  <option value="EV">EV</option>
+                  <option value="PICKUP_TRUCK">Pick up Truck</option>
+                  <option value="SHUTTLE">Shuttle</option>
+                  <option value="TRAIN">Train</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="distance" class="col-sm-4 col-form-label"
+                >Distance</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  formControlName="distance"
+                  class="form-control"
+                  id="distance"
+                  placeholder="Enter distance in miles"
+                />
+              </div>
+            </div>
+          </div>
+          <div *ngIf="currentSection === 'water'">
+            <h5 class="card-title mb-3">Water Consumption</h5>
+            <div class="form-group row mb-3">
+              <label for="temperature" class="col-sm-4 col-form-label"
+                >Temperature</label
+              >
+              <div class="col-sm-8">
+                <select
+                  formControlName="temperature"
+                  class="form-control"
+                  id="temperature"
+                >
+                  <option value="high">High</option>
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="sourceWater" class="col-sm-4 col-form-label">Source</label>
+              <div class="col-sm-8">
+                <select
+                  formControlName="sourceWater"
+                  class="form-control"
+                  id="sourceWater"
+                >
+                  <option value="DESALINATED">Desalineated</option>
+                  <option value="RECYCLED">Recycled</option>
+                  <option value="SURFACE_WATER">Surface water</option>
+                  <option value="IMPORTED">Imported</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label for="quantity" class="col-sm-4 col-form-label"
+                >Quantity</label
+              >
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  formControlName="quantity"
+                  class="form-control"
+                  id="quantity"
+                  placeholder="Enter in litres"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mt-3">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="goBack()"
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              class="btn btn-success ml-20"
+              (click)="goNext()"
+            >
+              {{ currentSection !== "water" ? "Next" : "Submit" }}
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer text-muted pb-3"></div>
+    </div>
+  </div>
+</div>

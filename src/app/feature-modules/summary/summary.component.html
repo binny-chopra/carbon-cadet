@@ -1,0 +1,88 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <h3 class="card-header text-center">Results</h3>
+        <div class="card-body">
+          <p class="card-text">Current carbon emissions count: {{ result }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <h3 class="card-header text-center">Suggestions</h3>
+        <div class="card-body">
+          <p class="card-text">{{ suggestion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3 justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <h3 class="card-header text-center">Pledge</h3>
+        <div class="card-body text-center">
+          <form
+            [formGroup]="pledgeForm"
+            (ngSubmit)="submitPledge()"
+            class="row"
+          >
+            <div *ngIf="!pledge" class="col-md-12 mb-3 text-justify">
+              It seems you have not entered into a pledge to reduce carbon
+              emissions yet. Let's take a pledge.
+            </div>
+            <div *ngIf="!pledge" class="col-md-8">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="target"
+                  formControlName="targetValue"
+                  placeholder="Enter your target here."
+                />
+              </div>
+            </div>
+            <div *ngIf="pledge" class="col-md-12 mb-3">
+              <div class="form-group">
+                <label *ngIf="improvedOrNot()" class="d-block"
+                  >Congratulations. The carbon emissions level decreased this
+                  time. Good job!</label
+                >
+                <label *ngIf="!improvedOrNot()" class="d-block"
+                  >Alert! The carbon emissions level increased this time. You need to
+                  be more cautious.</label
+                >
+              </div>
+            </div>
+            <div *ngIf="pledge" class="col-md-4">
+              <div class="form-group">
+                <label for="target" class="d-block"
+                  >New Target to be achieved:</label
+                >
+              </div>
+            </div>
+            <div *ngIf="pledge" class="col-md-4">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="target"
+                  formControlName="targetValue"
+                  placeholder="Enter new target value"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-success col-6">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="#" class="btn btn-success mt-3 text-center d-grid col-3 mx-auto"
+    >Go to Homepage</a
+  >
+</div>

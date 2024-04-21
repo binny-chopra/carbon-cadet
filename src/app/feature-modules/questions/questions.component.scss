@@ -1,0 +1,21 @@
+.stepper-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.stepper-step {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 10px;
+}
+
+.stepper-step.active {
+  background-color: #198754;
+}
+
+.ml-20 {
+    margin-left: 1.25rem;
+}
